@@ -1,0 +1,73 @@
+<section id="welcome-section" class="welcome-section">
+  <div class="welcome-copy">
+    <p>익명으로 커밋하는 개발자 대나무숲</p>
+    <strong>PlayCode Bamboo</strong>
+  </div>
+
+  <div class="welcome-actions">
+    <div class="welcome-action">
+      <p>new contributor?</p>
+      <button id="welcome-signup-button" class="welcome-button" type="button">Join</button>
+    </div>
+
+    <div class="welcome-action">
+      <p>already pushed?</p>
+      <button id="welcome-login-button" class="welcome-button welcome-button-dark" type="button">Login</button>
+    </div>
+  </div>
+</section>
+
+<section id="login-section" class="login-section hidden">
+  <h2 class="login-title">Login</h2>
+
+  <div class="login-card">
+    <label for="login-email-input">email</label>
+    <input id="login-email-input" type="email" placeholder="dev@example.com" />
+    <p id="login-email-input-error" class="field-error"></p>
+
+    <label for="login-password-input">secret</label>
+    <input id="login-password-input" type="password" placeholder="enter secret" />
+    <p id="login-password-input-error" class="field-error"></p>
+
+    <p id="login-helper-text" class="helper-text"></p>
+
+    <button id="login-button" class="login-submit-button" disabled>Login</button>
+    <button id="go-signup-button" class="text-button">Join workspace</button>
+  </div>
+</section>
+
+<section id="signup-section" class="section signup-section hidden">
+  <button id="signup-back-button" class="signup-back-button" type="button" aria-label="welcome으로 돌아가기">‹</button>
+  <h2>Join</h2>
+
+  <div class="signup-profile-field">
+    <label for="signup-profile-image-input">avatar</label>
+    <p id="signup-profile-image-error" class="field-error">optional</p>
+    <label class="signup-profile-uploader" for="signup-profile-image-input">
+      <img id="signup-profile-preview" class="signup-profile-preview hidden" alt="프로필 사진 미리보기" />
+      <span id="signup-profile-plus" class="signup-profile-plus">+</span>
+    </label>
+  </div>
+  <input id="signup-profile-image-input" class="hidden-file-input" type="file" accept="image/*" />
+
+  <label for="signup-email-input">email*</label>
+  <input id="signup-email-input" type="email" placeholder="dev@example.com" />
+  <p id="signup-email-error" class="field-error"></p>
+
+  <label for="signup-password-input">secret*</label>
+  <input id="signup-password-input" type="password" placeholder="enter secret" />
+  <p id="signup-password-error" class="field-error"></p>
+
+  <label for="signup-password-check-input">confirm secret*</label>
+  <input id="signup-password-check-input" type="password" placeholder="confirm secret" />
+  <p id="signup-password-check-error" class="field-error"></p>
+
+  <label for="signup-nickname-input">handle*</label>
+  <input id="signup-nickname-input" type="text" placeholder="anonymous handle" />
+  <p id="signup-nickname-error" class="field-error"></p>
+
+  <div class="button-row">
+    <button id="signup-button" class="signup-submit-button" disabled>Create Account</button>
+    <button id="cancel-signup-button" class="text-button" type="button">already have access? Login</button>
+  </div>
+</section>

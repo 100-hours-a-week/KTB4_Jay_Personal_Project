@@ -1,0 +1,105 @@
+<section id="post-list-section" class="section hidden">
+  <div class="post-list-intro">
+    <p>개발자들을 위한 익명 대나무숲 게시판<br />게시글을 클릭하여 다양한 코드리뷰를 남겨보세요!</p>
+    <div class="post-list-actions">
+      <button id="show-list-login-button" class="list-login-button" type="button">Login</button>
+      <button id="show-create-button" type="button">Commit</button>
+    </div>
+  </div>
+
+  <div class="post-list-toolbar">
+    <div class="sort-toggle" aria-label="Feed sort">
+      <button id="sort-latest-button" class="sort-button active" type="button">Latest</button>
+      <button id="sort-popular-button" class="sort-button" type="button">Hot</button>
+    </div>
+  </div>
+
+  <button id="refresh-posts-button" class="hidden" type="button">Refresh</button>
+  <div id="post-list" class="post-list"></div>
+
+  <div class="pagination">
+    <button id="prev-page-button">이전</button>
+    <span id="page-info">1 / 1</span>
+    <button id="next-page-button">다음</button>
+  </div>
+</section>
+
+<section id="post-create-section" class="section hidden">
+  <h2>New Commit</h2>
+
+  <label for="create-title-input">commit.title</label>
+  <input id="create-title-input" type="text" placeholder="commit title" />
+
+  <label for="create-content-input">commit.body</label>
+  <textarea id="create-content-input" placeholder="write your anonymous log"></textarea>
+
+  <div class="button-row">
+    <button id="create-post-button">Deploy</button>
+    <button id="save-draft-button">Stash</button>
+    <button id="load-draft-button">Load Stash</button>
+    <button id="cancel-create-button">Cancel</button>
+  </div>
+</section>
+
+<section id="post-detail-section" class="section post-detail-section hidden">
+  <div class="section-header">
+    <h2 id="detail-title"></h2>
+
+    <div class="button-row">
+      <button id="show-report-button" class="danger">Bug Report</button>
+      <button id="back-to-list-button">Back to Feed</button>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span id="detail-author"></span>
+    <span id="detail-created-at"></span>
+    <span id="detail-edited"></span>
+  </div>
+
+  <div id="detail-content" class="detail-content"></div>
+
+  <div class="count-row">
+    <span>View: <strong id="detail-view-count">0</strong></span>
+    <span>Star: <strong id="detail-like-count">0</strong></span>
+    <span>Thread: <strong id="detail-comment-count">0</strong></span>
+  </div>
+
+  <div class="button-row">
+    <button id="like-post-button">★ Star</button>
+    <button id="show-edit-button">Amend</button>
+    <button id="delete-post-button" class="danger">Drop</button>
+  </div>
+
+  <div id="report-box" class="report-box hidden">
+    <h3>Create Issue</h3>
+    <input id="report-reason-input" type="text" placeholder="issue reason" />
+    <button id="report-post-button" class="danger">Create Issue</button>
+  </div>
+
+  <div class="comment-box">
+    <h3>Thread</h3>
+
+    <div id="comment-list"></div>
+
+    <div class="comment-form">
+      <input id="comment-input" type="text" placeholder="leave a code review" />
+      <button id="create-comment-button">Review</button>
+    </div>
+  </div>
+</section>
+
+<section id="post-edit-section" class="section hidden">
+  <h2>Amend Commit</h2>
+
+  <label for="edit-title-input">commit.title</label>
+  <input id="edit-title-input" type="text" />
+
+  <label for="edit-content-input">commit.body</label>
+  <textarea id="edit-content-input"></textarea>
+
+  <div class="button-row">
+    <button id="update-post-button">Deploy Patch</button>
+    <button id="cancel-edit-button">Cancel</button>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+<section id="profile-view-section" class="section hidden">
+  <div class="section-header">
+    <h2>Profile</h2>
+    <button id="profile-view-edit-button">Config</button>
+  </div>
+
+  <div class="profile-view">
+    <img id="profile-view-image" class="profile-image" alt="프로필 이미지" />
+
+    <div class="profile-info">
+      <p><strong>user.id</strong> <span id="profile-view-user-id"></span></p>
+      <p><strong>email</strong> <span id="profile-view-email"></span></p>
+      <p><strong>handle</strong> <span id="profile-view-nickname"></span></p>
+    </div>
+  </div>
+</section>
+<section id="password-edit-section" class="section password-edit-section hidden">
+  <button id="password-back-to-list-button" class="profile-back-button" type="button">Back to Feed</button>
+
+  <h2>Rotate Secret</h2>
+
+  <div class="password-edit-form">
+    <label for="current-password-input">current secret</label>
+    <input id="current-password-input" type="password" placeholder="current secret" />
+    <p id="current-password-error" class="field-error"></p>
+
+    <label for="new-password-input">new secret</label>
+    <input id="new-password-input" type="password" placeholder="new secret" />
+    <p id="new-password-error" class="field-error"></p>
+
+    <label for="new-password-check-input">confirm new secret</label>
+    <input id="new-password-check-input" type="password" placeholder="confirm new secret" />
+    <p id="new-password-check-error" class="field-error"></p>
+
+    <button id="update-password-button" class="profile-submit-button">Rotate</button>
+  </div>
+</section>
+
+<section id="profile-edit-section" class="section profile-edit-section hidden">
+  <button id="profile-back-to-list-button" class="profile-back-button" type="button">Back to Feed</button>
+
+  <h2>Profile Config</h2>
+
+  <label>avatar</label>
+  <label class="profile-edit-image-uploader" for="profile-image-input">
+    <img id="profile-edit-preview" class="profile-image" alt="프로필 이미지 미리보기" />
+    <span class="profile-image-change-text">change</span>
+  </label>
+  <input id="profile-image-input" class="hidden-file-input" type="file" accept="image/*" />
+
+  <div class="profile-edit-form">
+    <label>email</label>
+    <p id="profile-edit-email" class="readonly-text"></p>
+
+    <label for="profile-nickname-input">handle</label>
+    <input id="profile-nickname-input" type="text" placeholder="anonymous handle" />
+    <p id="profile-nickname-error" class="field-error"></p>
+
+    <button id="update-profile-button" class="profile-submit-button">Save Config</button>
+    <button id="delete-user-button" class="profile-delete-button" type="button">Delete Account</button>
+  </div>
+</section>
+
+<div id="delete-user-modal" class="modal-overlay hidden">
+  <div class="confirm-modal">
+    <h2>Delete Account?</h2>
+    <p>All commits and threads will be removed.</p>
+
+    <div class="confirm-modal-actions">
+      <button id="cancel-delete-user-button" class="confirm-cancel-button" type="button">Cancel</button>
+      <button id="confirm-delete-user-button" class="confirm-submit-button" type="button">Confirm</button>
+    </div>
+  </div>
+</div>
+  

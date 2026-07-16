@@ -1,0 +1,467 @@
+.signup-profile-uploader {
+  width: 176px;
+  height: 176px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 22px auto;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #c7c7c7;
+  color: #555;
+  cursor: pointer;
+}
+
+.signup-profile-plus {
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.signup-profile-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.welcome-section {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 230px;
+  padding: 122px 20px 48px 20px;
+  color: #111;
+}
+
+.welcome-copy {
+  text-align: center;
+}
+
+.welcome-copy p {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #333;
+}
+
+.welcome-copy strong {
+  display: block;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #111;
+}
+
+.welcome-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 260px));
+  gap: 24px;
+  width: 100%;
+  max-width: 544px;
+}
+
+.welcome-action {
+  text-align: center;
+}
+
+.welcome-action p {
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #777;
+}
+
+.welcome-button {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #111;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.welcome-button:hover {
+  background-color: #f2f2f2;
+  opacity: 1;
+}
+
+.welcome-button-dark {
+  background-color: #111;
+  color: #fff;
+}
+
+.welcome-button-dark:hover {
+  background-color: #333;
+}
+
+.signup-section {
+  width: 100%;
+  max-width: 500px;
+  margin: 44px auto 32px auto;
+  padding: 34px 44px 30px 44px;
+  position: relative;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.06);
+}
+
+.signup-back-button {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #222;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 36px;
+}
+
+.signup-back-button:hover {
+  background-color: #f1f1f1;
+  opacity: 1;
+}
+
+.signup-section h2 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.signup-section label {
+  display: block;
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #222;
+}
+
+.signup-section input {
+  width: 100%;
+  height: 42px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #fff;
+  color: #222;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.signup-section input::placeholder {
+  color: #999;
+}
+
+.signup-section input:focus {
+  border-color: #111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.signup-section input.input-error {
+  border-color: #ff3b30;
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.08);
+}
+
+.signup-section .button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 10px;
+}
+
+.signup-section .field-error {
+  min-height: 14px;
+  margin: 4px 0 12px 0;
+  color: #ff3b30;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.signup-profile-field {
+  margin-bottom: 4px;
+}
+
+.signup-profile-field label,
+.signup-profile-field .field-error {
+  text-align: center;
+}
+
+.signup-profile-field .field-error {
+  margin: 0 0 8px 0;
+  color: #777;
+  font-weight: 600;
+}
+
+.signup-section .signup-profile-uploader {
+  width: 118px;
+  height: 118px;
+  position: relative;
+  margin: 0 auto 18px auto;
+  border: 1px solid #d2d2d2;
+  background-color: #e1e1e1;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.signup-section .signup-profile-uploader:hover {
+  background-color: #d8d8d8;
+  transform: translateY(-1px);
+}
+
+.signup-section .signup-profile-plus {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 300;
+  color: #222;
+  line-height: 1;
+}
+
+.signup-section .signup-profile-plus.hidden {
+  display: none;
+}
+
+.signup-submit-button {
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  background-color: #111;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.signup-submit-button:hover {
+  background-color: #333;
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.signup-submit-button:disabled {
+  background-color: #cfcfcf;
+  cursor: not-allowed;
+  opacity: 1;
+  transform: none;
+}
+
+.signup-section .text-button {
+  height: auto;
+  margin: 16px auto 0 auto;
+  font-size: 13px;
+  color: #666;
+  font-weight: 600;
+}
+
+.signup-section .text-button:hover {
+  color: #111;
+}
+
+.login-section {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 92px 20px 48px 20px;
+}
+
+.login-title {
+  margin: 0 0 28px 0;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 42px 44px 34px 44px;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.06);
+}
+
+.login-card label {
+  display: block;
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #222;
+}
+
+.login-card input {
+  width: 100%;
+  height: 42px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #fff;
+  color: #222;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.login-card input::placeholder {
+  color: #999;
+}
+
+.login-card input:focus {
+  border-color: #111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.login-card input.input-error {
+  border-color: #ff3b30;
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.08);
+}
+
+.login-card .field-error {
+  min-height: 14px;
+  margin: 4px 0 16px 0;
+  color: #ff3b30;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.helper-text {
+  min-height: 18px;
+  margin: 0 0 16px 0;
+  font-size: 13px;
+  color: #ff3b30;
+  font-weight: 700;
+}
+
+.login-submit-button {
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  background-color: #111;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.login-submit-button:hover {
+  background-color: #333;
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.login-submit-button:disabled {
+  background-color: #cfcfcf;
+  cursor: not-allowed;
+  opacity: 1;
+  transform: none;
+}
+
+.text-button {
+  display: block;
+  margin: 12px auto 0 auto;
+  padding: 0;
+  background: none;
+  color: #222;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .welcome-section {
+    gap: 160px;
+    padding: 92px 18px 32px 18px;
+  }
+
+  .welcome-copy p {
+    font-size: 19px;
+  }
+
+  .welcome-copy strong {
+    font-size: 34px;
+  }
+
+  .welcome-actions {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .welcome-button {
+    height: 56px;
+    font-size: 17px;
+  }
+
+  .signup-section {
+    max-width: calc(100% - 28px);
+    margin: 24px auto 24px auto;
+    padding: 30px 22px 26px 22px;
+    border-radius: 16px;
+  }
+
+  .signup-back-button {
+    left: 14px;
+    top: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+  }
+
+  .signup-section h2 {
+    font-size: 32px;
+    margin-bottom: 22px;
+  }
+
+  .signup-section .signup-profile-uploader {
+    width: 112px;
+    height: 112px;
+  }
+
+  .login-section {
+    padding: 64px 14px 32px 14px;
+  }
+
+  .login-card {
+    max-width: calc(100% - 28px);
+    padding: 34px 22px 30px 22px;
+    border-radius: 16px;
+  }
+
+  .login-title {
+    font-size: 32px;
+    margin-bottom: 22px;
+  }
+}

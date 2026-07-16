@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f6f8;
+  color: #222;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button.danger {
+  background-color: #c62828;
+}
+
+button.secondary {
+  background-color: #555;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin: 8px 0 18px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+input.input-error {
+  border-color: #e35d5d;
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.field-error {
+  min-height: 20px;
+  margin: -8px 0 12px 0;
+  color: #e35d5d;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.message {
+  min-height: 24px;
+  font-weight: bold;
+}
+
+.message.success {
+  color: #0a7a2f;
+}
+
+.message.error {
+  color: #c62828;
+}

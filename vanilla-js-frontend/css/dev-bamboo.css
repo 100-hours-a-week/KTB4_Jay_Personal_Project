@@ -1,0 +1,505 @@
+:root {
+  --terminal-bg: #080d14;
+  --terminal-panel: #101720;
+  --terminal-panel-soft: #141d29;
+  --terminal-border: #243141;
+  --terminal-border-bright: #33506a;
+  --terminal-text: #e6edf3;
+  --terminal-muted: #8b9aaa;
+  --terminal-green: #00ff66;
+  --terminal-blue: #007aff;
+  --terminal-danger: #ff5f56;
+  --terminal-shadow: 0 20px 70px rgba(0, 0, 0, 0.42);
+  --mono-font: "JetBrains Mono", "NanumGothicCoding", "SFMono-Regular", Consolas, monospace;
+  --sans-font: "Inter", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(0, 122, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 84% 8%, rgba(0, 255, 102, 0.12), transparent 26%),
+    linear-gradient(135deg, #080d14 0%, #0b1220 54%, #05070b 100%);
+  color: var(--terminal-text);
+  font-family: var(--sans-font);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent 72%);
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  border: 1px solid var(--terminal-border);
+  border-radius: 8px;
+  background-color: var(--terminal-panel-soft);
+  color: var(--terminal-text);
+  transition: border-color 0.16s ease, background-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+}
+
+button:hover {
+  border-color: var(--terminal-green);
+  background-color: #172231;
+  color: var(--terminal-green);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  border-color: #1d2936;
+  background-color: #151b24;
+  color: #596575;
+  cursor: not-allowed;
+  transform: none;
+}
+
+input,
+textarea {
+  border: 1px solid var(--terminal-border);
+  border-radius: 8px;
+  background-color: #0b111a;
+  color: var(--terminal-text);
+  caret-color: var(--terminal-green);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #667386;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.12);
+  outline: none;
+}
+
+.container {
+  background-color: transparent;
+}
+
+.section,
+.signup-section,
+.login-card,
+.post-detail-section,
+#profile-view-section,
+.profile-edit-section,
+.password-edit-section,
+#post-create-section,
+#post-edit-section {
+  border: 1px solid var(--terminal-border);
+  background: rgba(16, 23, 32, 0.9);
+  color: var(--terminal-text);
+  box-shadow: var(--terminal-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.message {
+  font-family: var(--mono-font);
+}
+
+.message.success {
+  color: var(--terminal-green);
+}
+
+.message.error,
+.field-error,
+.helper-text {
+  color: var(--terminal-danger);
+}
+
+.welcome-section {
+  color: var(--terminal-text);
+}
+
+.welcome-copy p {
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.welcome-copy p::before {
+  content: "> ";
+  color: var(--terminal-green);
+}
+
+.welcome-copy strong {
+  color: var(--terminal-text);
+  text-shadow: 0 0 24px rgba(0, 255, 102, 0.18);
+}
+
+.welcome-button,
+.welcome-button-dark,
+.login-submit-button,
+.signup-submit-button,
+.profile-submit-button,
+#show-create-button,
+.list-login-button,
+.pagination button,
+.post-detail-section .button-row button,
+.comment-form button,
+#report-post-button {
+  border: 1px solid rgba(0, 255, 102, 0.52);
+  background: linear-gradient(135deg, rgba(0, 255, 102, 0.16), rgba(0, 122, 255, 0.16));
+  color: var(--terminal-green);
+  font-family: var(--mono-font);
+  letter-spacing: 0;
+}
+
+.welcome-button-dark,
+.login-submit-button,
+.signup-submit-button,
+#show-create-button,
+.comment-form button {
+  background: var(--terminal-green);
+  color: #06100b;
+}
+
+.welcome-button:hover,
+.welcome-button-dark:hover,
+.login-submit-button:hover,
+.signup-submit-button:hover,
+#show-create-button:hover,
+.comment-form button:hover {
+  border-color: var(--terminal-green);
+  background: #31ff83;
+  color: #06100b;
+}
+
+.text-button {
+  color: var(--terminal-muted);
+}
+
+.text-button:hover {
+  color: var(--terminal-green);
+}
+
+.login-title,
+.signup-section h2,
+.post-detail-section h2,
+#post-create-section h2,
+#post-edit-section h2,
+.profile-view-section h2,
+.profile-edit-section h2,
+.password-edit-section h2 {
+  color: var(--terminal-text);
+}
+
+.signup-section label,
+.login-card label,
+#post-create-section label,
+#post-edit-section label,
+.profile-edit-fields label {
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+  font-size: 13px;
+}
+
+.signup-profile-uploader,
+.signup-section .signup-profile-uploader,
+.profile-image {
+  border: 1px solid var(--terminal-border-bright);
+  background: #0b111a;
+}
+
+.signup-section .signup-profile-plus {
+  color: var(--terminal-green);
+}
+
+.profile-avatar-button {
+  border-color: var(--terminal-green);
+  background-color: #0b111a;
+  box-shadow: 0 0 24px rgba(0, 255, 102, 0.24);
+}
+
+#post-create-section,
+#post-edit-section,
+#profile-view-section,
+.profile-edit-section,
+.password-edit-section {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 18px;
+}
+
+#post-create-section input,
+#post-create-section textarea,
+#post-edit-section input,
+#post-edit-section textarea,
+.profile-edit-section input,
+.password-edit-section input {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+#post-create-section textarea,
+#post-edit-section textarea {
+  min-height: 240px;
+  padding: 14px;
+  resize: vertical;
+}
+
+#post-create-section .button-row,
+#post-edit-section .button-row {
+  margin-top: 12px;
+}
+
+.profile-dropdown {
+  border: 1px solid var(--terminal-border);
+  background-color: #0b111a;
+  box-shadow: var(--terminal-shadow);
+}
+
+.profile-dropdown button {
+  color: var(--terminal-text);
+  font-family: var(--mono-font);
+}
+
+.post-list-intro p {
+  color: var(--terminal-text);
+  font-family: var(--mono-font);
+}
+
+.post-list-intro p::before {
+  content: "anonymous@bamboo:~$ ";
+  display: block;
+  margin-bottom: 8px;
+  color: var(--terminal-green);
+  font-size: 14px;
+}
+
+.sort-toggle,
+.post-card,
+.post-empty,
+.comment-item {
+  border: 1px solid var(--terminal-border);
+  background-color: rgba(16, 23, 32, 0.94);
+  color: var(--terminal-text);
+  box-shadow: 0 16px 54px rgba(0, 0, 0, 0.32);
+}
+
+.sort-button {
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.sort-button.active {
+  background-color: var(--terminal-green);
+  color: #06100b;
+}
+
+.sort-button:hover {
+  background-color: #162230;
+  color: var(--terminal-green);
+}
+
+.sort-button.active:hover {
+  background-color: #31ff83;
+  color: #06100b;
+}
+
+.post-card:hover {
+  border-color: rgba(0, 255, 102, 0.58);
+  box-shadow: 0 24px 72px rgba(0, 255, 102, 0.08), 0 20px 64px rgba(0, 0, 0, 0.4);
+}
+
+.post-card h3 {
+  color: var(--terminal-text);
+}
+
+.post-card h3::before,
+.post-detail-section h2::before {
+  content: "# ";
+  color: var(--terminal-green);
+  font-family: var(--mono-font);
+}
+
+.post-card p,
+.post-counts,
+.post-date,
+.post-author,
+.meta {
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.post-author {
+  border-top-color: var(--terminal-border);
+  background-color: rgba(8, 13, 20, 0.54);
+}
+
+.post-author::before {
+  background:
+    linear-gradient(135deg, rgba(0, 255, 102, 0.9), rgba(0, 122, 255, 0.8));
+}
+
+.meta span,
+.count-row span {
+  border: 1px solid var(--terminal-border);
+  background-color: rgba(8, 13, 20, 0.72);
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.count-row strong {
+  color: var(--terminal-green);
+}
+
+.detail-content {
+  border-color: var(--terminal-border);
+  color: var(--terminal-text);
+  font-family: var(--mono-font);
+}
+
+.comment-box {
+  border-top-color: var(--terminal-border);
+}
+
+.comment-box h3 {
+  color: var(--terminal-text);
+}
+
+.comment-box h3::before {
+  content: "// ";
+  color: var(--terminal-green);
+  font-family: var(--mono-font);
+}
+
+.comment-meta {
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.comment-button-row button,
+.comment-edit-form button,
+.post-detail-section .button-row .danger,
+#report-post-button.danger,
+#delete-post-button,
+.profile-delete-button,
+.confirm-cancel-button {
+  border-color: var(--terminal-border);
+  background-color: #162230;
+  color: var(--terminal-text);
+}
+
+.danger:hover,
+#delete-post-button:hover,
+.profile-delete-button:hover {
+  border-color: var(--terminal-danger);
+  color: var(--terminal-danger);
+}
+
+.confirm-modal {
+  border: 1px solid var(--terminal-border);
+  background-color: var(--terminal-panel);
+  color: var(--terminal-text);
+  box-shadow: var(--terminal-shadow);
+}
+
+.confirm-submit-button {
+  border-color: var(--terminal-green);
+  background-color: var(--terminal-green);
+  color: #06100b;
+}
+
+.pagination button:disabled {
+  background-color: #161e2a;
+  color: #5f6b78;
+}
+
+#page-info {
+  color: var(--terminal-green);
+  font-family: var(--mono-font);
+}
+
+.profile-edit-section,
+.password-edit-section {
+  padding: 42px;
+}
+
+.profile-edit-section > label,
+.profile-edit-form label,
+.password-edit-form label {
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.readonly-text {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0 0 16px 0;
+  padding: 0 14px;
+  overflow: hidden;
+  border: 1px solid var(--terminal-border);
+  border-radius: 8px;
+  background-color: #0b111a;
+  color: var(--terminal-text);
+  font-family: var(--mono-font);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-edit-form input,
+.password-edit-form input {
+  height: 44px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid var(--terminal-border);
+  border-radius: 8px;
+  background-color: #0b111a;
+  color: var(--terminal-text);
+  font-family: var(--mono-font);
+  font-size: 14px;
+}
+
+.profile-edit-form input::placeholder,
+.password-edit-form input::placeholder {
+  color: #667386;
+}
+
+.profile-edit-form input:focus,
+.password-edit-form input:focus {
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.12);
+}
+
+.profile-image-change-text {
+  background-color: rgba(8, 13, 20, 0.82);
+  color: var(--terminal-green);
+  font-family: var(--mono-font);
+}
+
+.profile-back-button {
+  width: auto;
+  min-width: 116px;
+  height: 38px;
+  margin: 0 0 22px 0;
+  padding: 0 14px;
+  border-color: var(--terminal-border);
+  background-color: #162230;
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+}
+
+.profile-back-button:hover {
+  border-color: var(--terminal-green);
+  color: var(--terminal-green);
+}
