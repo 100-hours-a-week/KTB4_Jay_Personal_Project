@@ -80,7 +80,7 @@ public class UserService {
                 .orElseThrow(() -> new UnauthorizedException("login_failed"));
 
         if (user.isDeleted()){
-            throw new UnauthorizedException("deleted_user");
+            throw new UnauthorizedException("login_failed");
         }
 
         boolean passwordMatched = passwordEncoder.matches(

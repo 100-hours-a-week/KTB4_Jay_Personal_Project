@@ -96,6 +96,7 @@ public class PostService {
     }
 
     // 게시글 상세 조회
+    @Transactional
     public PostDetailResponse getPostDetail(Long postId, Long currentUserId){
         Post post = postReader.getActivePostWithAuthor(postId);
         User author = post.getAuthor();

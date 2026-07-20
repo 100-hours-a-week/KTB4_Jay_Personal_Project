@@ -18,6 +18,7 @@ let refreshToken = localStorage.getItem("refreshToken") || null;
 // 현재 로그인한 회원정보는 여러 화면에서 같이 써야되니깐 변수로 저장
 // 프로필 이미지는 파일 자체를 서버에 보내는게 아니라 브라우저에서 먼저 들고 있음
 let currentUser = null;
+let currentUserId = null;
 let selectedProfileImage = "";
 let selectedProfileImageChanged = false;
 let signupProfileImage = "";
