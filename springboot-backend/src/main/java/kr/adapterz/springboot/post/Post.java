@@ -67,6 +67,18 @@ public class Post {
         this.deletedAt = null;
     }
 
+    public Post(User author, String title, String content, LocalDateTime createdAt){
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.viewCount = 0L;
+        this.commentCount = 0L;
+        this.likeCount = 0L;
+        this.blinded = false;
+        this.createdAt = createdAt;
+        this.updatedAt = null;
+        this.deletedAt = null;
+    }
     public void increaseViewCount(){
         this.viewCount ++;
     }
@@ -81,6 +93,15 @@ public class Post {
         this.title = title;
         this.content = content;
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public void increaseLikeCount(){
+        this.likeCount ++;
+    }
+    public void decreaseLikeCount(){
+        if (this.likeCount > 0){
+            this.likeCount --;
+        }
     }
 
     public void delete(){

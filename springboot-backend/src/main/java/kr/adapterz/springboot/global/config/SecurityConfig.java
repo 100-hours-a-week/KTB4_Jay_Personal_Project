@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +31,9 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 // CSRF는 주로 세션-쿠키 방식에서 일어나는 공격 방식이라 REST API 방식에서는 끄고 시작하는게 일반적임
                 .csrf(AbstractHttpConfigurer::disable)
+                .headers(headers ->
+                        headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
+                )
                 // formLogin 필터가 처리하는 로그인이 아니므로 disable 처리하고 시작
                 .formLogin(AbstractHttpConfigurer::disable)
                 // HTTP Basic은 요청 헤더에 아이디/비밀번호를 실어 보내는 방식인데 JWT를 쓸 것이기 때문에 이것도 disable 처리
@@ -48,6 +52,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                                .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/users/register", "/users/login", "/users/token/refresh").permitAll()
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")

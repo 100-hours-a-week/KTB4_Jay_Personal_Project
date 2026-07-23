@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { getPosts } from '../api/postApi'
+import { getPosts, getRankPosts } from '../api/postApi'
 import PostCard from '../components/PostCard'
 import { useAuth } from '../context/AuthContext'
 
@@ -17,13 +17,19 @@ function PostListPage({
   const [posts, setPosts] = useState([])
   const [pageData, setPageData] = useState(null)
   const [sortType, setSortType] = useState('latest')
+  const [rankPeriod, setRankPeriod] = useState('WEEKLY')
+  const [isHotMenuOpen, setIsHotMenuOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const loadPosts = useCallback(async (page = 0) => {
+  const loadPosts = useCallback(async (page = 0, nextSortType = 'latest', nextRankPeriod = 'WEEKLY') => {
     setIsLoading(true)
-
+    
     try {
-      const result = await getPosts(page, PAGE_SIZE)
+      const result = 
+      nextSortType === 'latest' 
+        ? await getPosts(page, PAGE_SIZE)
+        : await getRankPosts(page, PAGE_SIZE, nextRankPeriod)
+      
       const data = result?.data ?? {}
       setPosts(data.content ?? [])
       setPageData(data)
@@ -38,8 +44,8 @@ function PostListPage({
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    loadPosts(currentPage)
-  }, [currentPage, loadPosts])
+    loadPosts(currentPage, sortType, rankPeriod)
+  }, [currentPage, loadPosts, rankPeriod, sortType])
 
   const current = (pageData?.number ?? currentPage) + 1
   const total = pageData?.totalPages === 0 ? 1 : (pageData?.totalPages ?? 1)
@@ -83,27 +89,59 @@ function PostListPage({
             type="button"
             onClick={() => {
               setSortType('latest')
-              loadPosts(0)
+              setIsHotMenuOpen(false)
+              setCurrentPage(0)
             }}
           >
             Latest
           </button>
-          <button
-            id="sort-popular-button"
-            className={`sort-button${sortType === 'popular' ? ' active' : ''}`}
-            type="button"
-            onClick={() => setSortType('popular')}
-          >
-            Hot
-          </button>
+          <div className="hot-sort-wrapper">
+            <button
+              id="sort-popular-button"
+              className={`sort-button${sortType === 'popular' ? ' active' : ''}`}
+              type="button"
+              aria-expanded={isHotMenuOpen}
+              onClick={() => setIsHotMenuOpen((prev) => !prev)}
+            >
+              Hot
+            </button>
+            {isHotMenuOpen && (
+              <div className="hot-period-menu" aria-label="Hot period">
+                <button
+                  className={rankPeriod === 'DAILY' ? 'active' : ''}
+                  type="button"
+                  onClick={() => {
+                    setSortType('popular')
+                    setRankPeriod('DAILY')
+                    setIsHotMenuOpen(false)
+                    setCurrentPage(0)
+                  }}
+                >
+                  Daily
+                </button>
+                <button
+                  className={rankPeriod === 'WEEKLY' ? 'active' : ''}
+                  type="button"
+                  onClick={() => {
+                    setSortType('popular')
+                    setRankPeriod('WEEKLY')
+                    setIsHotMenuOpen(false)
+                    setCurrentPage(0)
+                  }}
+                >
+                  Weekly
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       <button
-        id="refresh-posts-button"
-        className="hidden"
-        type="button"
-        onClick={() => loadPosts(currentPage)}
+          id="refresh-posts-button"
+          className="hidden"
+          type="button"
+          onClick={() => loadPosts(currentPage, sortType, rankPeriod)}
       >
         Refresh
       </button>
@@ -132,7 +170,7 @@ function PostListPage({
           disabled={pageData?.first ?? true}
           onClick={() => {
             if (currentPage > 0) {
-              loadPosts(currentPage - 1)
+              loadPosts(currentPage - 1, sortType, rankPeriod)
             }
           }}
         >
@@ -145,7 +183,7 @@ function PostListPage({
           id="next-page-button"
           type="button"
           disabled={pageData?.last ?? true}
-          onClick={() => loadPosts(currentPage + 1)}
+          onClick={() => loadPosts(currentPage + 1, sortType, rankPeriod)}
         >
           다음
         </button>

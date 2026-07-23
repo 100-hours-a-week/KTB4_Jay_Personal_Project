@@ -32,8 +32,9 @@ public class LikeService {
         }
 
         likeRepository.save(new Like(post, user));
+        post.increaseLikeCount();
 
-        return new LikeResponse(likeRepository.countByPost_Id(postId));
+        return new LikeResponse(post.getLikeCount());
     }
 
     // 좋아요 취소
@@ -43,9 +44,11 @@ public class LikeService {
             Long postId) {
         Like like = likeRepository.findByPost_IdAndUser_Id(postId, currentUserId)
                 .orElseThrow(() -> new NotFoundException("like_not_found"));
+        Post post = postReader.getActivePost(postId);
 
         likeRepository.delete(like);
+        post.decreaseLikeCount();
 
-        return new LikeResponse(likeRepository.countByPost_Id(postId));
+        return new LikeResponse(post.getLikeCount());
     }
 }

@@ -552,12 +552,17 @@
 
 .sort-toggle {
   display: inline-flex;
-  gap: 4px;
+  gap: 12px;
+  align-items: center;
   padding: 4px;
   border: 1px solid var(--terminal-border);
   border-radius: 999px;
   background-color: rgba(16, 23, 32, 0.94);
   box-shadow: 0 16px 54px rgba(0, 0, 0, 0.32);
+}
+
+.hot-sort-wrapper {
+  position: relative;
 }
 
 .sort-button {
@@ -576,6 +581,43 @@
 .sort-button.active {
   background-color: var(--terminal-green);
   color: #06100b;
+}
+
+.hot-period-menu {
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  z-index: 12;
+  display: flex;
+  min-width: 124px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--terminal-border);
+  border-radius: 12px;
+  background-color: rgba(16, 23, 32, 0.98);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+  transform: translateX(-50%);
+}
+
+.hot-period-menu button {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--terminal-muted);
+  font-family: var(--mono-font);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.hot-period-menu button:hover,
+.hot-period-menu button.active {
+  background-color: rgba(0, 255, 102, 0.14);
+  color: var(--terminal-green);
 }
 
 .post-list {

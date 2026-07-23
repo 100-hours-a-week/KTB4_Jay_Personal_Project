@@ -84,7 +84,46 @@ public class PostService {
                     .postId(post.getId())
                     .title(post.getTitle())
                     .authorNickname(authorNickname)
-                    .likeCount(likeRepository.countByPost_Id(post.getId()))
+                    .likeCount(post.getLikeCount())
+                    .commentCount((long) post.getCommentCount())
+                    .viewCount((long) post.getViewCount())
+                    .createdAt(post.getCreatedAt())
+                    .updatedAt(post.getUpdatedAt())
+                    .authorDeleted(author.isDeleted())
+                    .blinded(false)
+                    .build();
+        });
+    }
+
+    public Page<PostListResponse> getRankPost(Pageable pageable, RankingPeriod period) {
+        LocalDateTime startTime = period.getStartDateTime();
+        Page<Post> posts = postRepository.findRankPosts(startTime, pageable);
+        return posts.map(post -> {
+            User author = post.getAuthor();
+
+            if (post.isBlinded()) {
+                return PostListResponse.builder()
+                        .postId(post.getId())
+                        .title("블라인드 처리된 게시글입니다.")
+                        .authorNickname("블라인드 처리된 사용자입니다.")
+                        .commentCount(null)
+                        .viewCount(null)
+                        .createdAt(post.getCreatedAt())
+                        .updatedAt(null)
+                        .authorDeleted(author.isDeleted())
+                        .blinded(true)
+                        .build();
+            }
+
+            String authorNickname = author.isDeleted()
+                    ? "알 수 없음"
+                    : author.getNickname();
+
+            return PostListResponse.builder()
+                    .postId(post.getId())
+                    .title(post.getTitle())
+                    .authorNickname(authorNickname)
+                    .likeCount(post.getLikeCount())
                     .commentCount((long) post.getCommentCount())
                     .viewCount((long) post.getViewCount())
                     .createdAt(post.getCreatedAt())
@@ -142,7 +181,7 @@ public class PostService {
                 .liked(liked)
                 .createdAt(post.getCreatedAt())
                 .updatedAt(post.getUpdatedAt())
-                .likeCount(likeRepository.countByPost_Id(postId))
+                .likeCount(post.getLikeCount())
                 .viewCount(post.getViewCount())
                 .commentCount(post.getCommentCount())
                 .comments(getComments(postId))

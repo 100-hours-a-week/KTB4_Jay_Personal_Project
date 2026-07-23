@@ -6,6 +6,12 @@ export function getPosts(page = 0, size = 5) {
   })
 }
 
+export function getRankPosts(page = 0, size = 5, period = 'WEEKLY') {
+  return apiRequest(`/posts/rank?page=${page}&size=${size}&period=${period}`, {
+    errorMessage: `Feed를 불러오지 못했습니다.`,
+  })
+}
+
 export function getPostDetail(postId) {
   return apiRequest(`/posts/${postId}`, {
     errorMessage: 'Log 상세 조회에 실패했습니다.',

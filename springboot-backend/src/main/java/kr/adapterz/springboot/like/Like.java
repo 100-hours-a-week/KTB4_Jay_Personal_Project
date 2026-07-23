@@ -7,6 +7,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(
         name = "likes",
@@ -34,8 +36,18 @@ public class Like {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
     public Like(Post post, User user) {
         this.post = post;
         this.user = user;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public Like(Post post, User user, LocalDateTime createdAt) {
+        this.post = post;
+        this.user = user;
+        this.createdAt = createdAt;
     }
 }

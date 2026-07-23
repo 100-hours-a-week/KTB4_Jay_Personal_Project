@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.method.P;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,11 +34,23 @@ public class PostController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<Page<PostListResponse>>> postlist(
-            @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC)
+    public ResponseEntity<ApiResponse<Page<PostListResponse>>> postList(
+            @PageableDefault(size = 5, sort = "createdAt", direction = Sort.Direction.DESC)
             Pageable pageable
     ) {
         Page<PostListResponse> response = postService.getPost(pageable);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ApiResponse<>("post_list_success", response));
+    }
+
+    @GetMapping("/rank")
+    public ResponseEntity<ApiResponse<Page<PostListResponse>>> rankPostList(
+            @RequestParam(defaultValue = "WEEKLY") RankingPeriod period,
+            @PageableDefault(size = 5)
+            Pageable pageable
+    ) {
+        Page<PostListResponse> response = postService.getRankPost(pageable, period);
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ApiResponse<>("post_list_success", response));

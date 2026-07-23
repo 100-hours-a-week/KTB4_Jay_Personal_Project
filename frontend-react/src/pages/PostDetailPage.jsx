@@ -69,12 +69,22 @@ function PostDetailPage({
 
     try {
       if (post.liked === true) {
-        await unstarPost(post.postId)
-      } else {
-        await starPost(post.postId)
-      }
+        const result = await unstarPost(post.postId)
 
-      await loadDetail(false)
+        setPost((prev) => ({
+          ...prev,
+          liked: false,
+          likeCount: result.data.likeCount
+        }))
+      } else {
+        const result = await starPost(post.postId)
+
+        setPost((prev) => ({
+          ...prev,
+          liked: true,
+          likeCount: result.data.likeCount
+        }))
+      }
     } catch (error) {
       showMessage(error.message, 'error')
     } finally {
